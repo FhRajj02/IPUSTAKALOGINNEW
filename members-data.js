@@ -25,6 +25,5 @@ const membersData = [
   { name: "Khairan", password: "Khairan" },
   { name: "Umar", password: "Umar" },
   { name: "dosen", password: "12345" },
-  { name: "mahasiswa", password: "12345" }
-];
-
+  { name: "mahasiswa", password: "12345" },
+  { name: "farizi", password: "farizi" }
