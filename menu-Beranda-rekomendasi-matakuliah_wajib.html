@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPustaka PUA — Matakuliah Wajib</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  if (!localStorage.getItem('ipustaka_session')) {
+    window.location.href = 'index.html';
+  }
+</script>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#17302D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0z"/>
+          <path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">iPustaka PUA</div>
+        <div class="brand-sub">Perpustakaan Digital</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group open" id="nav-group-beranda">
+        <div class="nav-row">
+          <a class="nav-item" href="menu.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+            <span>Beranda</span>
+          </a>
+          <button class="nav-toggle" type="button" data-target="sub-beranda" aria-label="Buka submenu Beranda">
+            <svg class="nav-chevron rotated" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="nav-sub" id="sub-beranda">
+          <div class="nav-group open" id="nav-group-rekomendasi">
+            <div class="nav-row">
+              <a class="nav-subitem" href="menu-Beranda-Rekomendasi.html">
+                <span>Rekomendasi</span>
+              </a>
+              <button class="nav-toggle small" type="button" data-target="sub-rekomendasi" aria-label="Buka submenu Rekomendasi">
+                <svg class="nav-chevron small rotated" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <div class="nav-sub" id="sub-rekomendasi">
+              <a class="nav-subitem active" href="menu-Beranda-rekomendasi-matakuliah_wajib.html">
+                <span>Matakuliah wajib</span>
+              </a>
+              <a class="nav-subitem" href="menu-Beranda-rekomendasi-Matakuliah_umum.html">
+                <span>Matakuliah umum</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-item" href="menu-Berita.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+        <span>Berita</span>
+      </a>
+      <a class="nav-item" href="menu-rak_pinjam.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l1-3h14l1 3"/><rect x="4" y="7" width="16" height="13" rx="1.5"/><path d="M9 7v13M15 7v13"/></svg>
+        <span>Rak Pinjam</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-title">
+        <strong>Butuh bantuan?</strong>
+        Hubungi meja layanan di lantai 1
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="search-wrap">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" placeholder="Cari judul, penulis, atau subjek…">
+        </div>
+        <div class="search-modes">
+          <span class="search-mode"><span class="radio-dot checked"></span>Pencarian Umum</span>
+          <span class="search-mode"><span class="radio-dot"></span>Pencarian Kalimat</span>
+        </div>
+      </div>
+      <div class="user-block">
+        <div class="user-text">
+          <div class="user-name">Muhammad Fajar Akbar Sophian</div>
+          <a class="user-logout">Logout</a>
+        </div>
+        <div class="avatar">MF</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="view active" id="view-matkul-wajib">
+        <div class="section-head" style="margin-top:0;">
+          <h2 class="section-title">Matakuliah wajib</h2>
+          <a class="section-link">Lihat silabus</a>
+        </div>
+        <p class="rec-intro">Bacaan pendukung untuk mata kuliah inti program studi ilmu komputer.</p>
+
+        <div class="section" style="margin-top:0;">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Algoritma pemrograman</h2></div>
+          <div class="book-grid" id="book-grid-algo"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Matematika</h2></div>
+          <div class="book-grid" id="book-grid-mkmat"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Aljabar</h2></div>
+          <div class="book-grid" id="book-grid-aljabar"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Desain sistem</h2></div>
+          <div class="book-grid" id="book-grid-desain"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Filosofi komputasi</h2></div>
+          <div class="book-grid" id="book-grid-filosofi"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script src="auth.js"></script>
+<script>
+  var __session = requireSession('index.html');
+  if (__session) applySessionToPage(__session, 'index.html');
+</script>
+<script src="books.js"></script>
+<script>
+  // ---- Matakuliah wajib > Algoritma pemrograman ----
+  const algoBooks = [
+    {title:"Algoritma dan Pemrograman Terstruktur", author:"B. Santoso", call:"005 ALG", color:"#1E3A37", cover:"covers/algoritma-dan-pemrograman-terstruktur.jpg"},
+    {title:"Desain dan Analisis Algoritma", author:"K. Wirawan", call:"005 DAA", color:"#5C7A63", cover:"covers/desain-dan-analisis-algoritma.jpg"},
+    {title:"Pemrograman Berorientasi Objek", author:"R. Aditya", call:"005 OOP", color:"#A67F1E", cover:"covers/pemrograman-berorientasi-objek.jpg"},
+    {title:"Struktur Data Lanjut", author:"W. Permadi", call:"005 STD", color:"#96392A", cover:"covers/struktur-data-lanjut.jpg"},
+  ];
+  // ---- Matakuliah wajib > Matematika ----
+  const mkMathBooks = [
+    {title:"Matematika Diskrit untuk Ilmu Komputer", author:"F. Oktaviani", call:"511 DIS", color:"#2C4A47", cover:"covers/matematika-diskrit-untuk-ilmu-komputer.jpg"},
+    {title:"Kalkulus Lanjut", author:"H. Wijaya", call:"515 KAL", color:"#5C7A63", cover:"covers/kalkulus-lanjut.jpg"},
+    {title:"Logika Matematika", author:"S. Nurhayati", call:"511 LOG", color:"#A67F1E", cover:"covers/logika-matematika.jpg"},
+    {title:"Teori Bilangan Dasar", author:"J. Pradana", call:"512 TEO", color:"#96392A", cover:"covers/teori-bilangan-dasar.jpg"},
+  ];
+  // ---- Matakuliah wajib > Aljabar ----
+  const aljabarBooks = [
+    {title:"Aljabar Abstrak", author:"M. Wicaksono", call:"512 ABS", color:"#1E3A37", cover:"covers/aljabar-abstrak.jpg"},
+    {title:"Aljabar Linear Lanjut", author:"C. Larasati", call:"512 LIN", color:"#5C7A63", cover:"covers/aljabar-linear-lanjut.jpg"},
+    {title:"Teori Grup dan Aplikasinya", author:"A. Nurcahyo", call:"512 GRP", color:"#A67F1E", cover:"covers/teori-grup-dan-aplikasinya.jpg"},
+    {title:"Aljabar Boolean", author:"D. Setiawan", call:"511 BOL", color:"#96392A", cover:"covers/aljabar-boolean.jpg"},
+  ];
+  // ---- Matakuliah wajib > Desain sistem ----
+  const desainBooks = [
+    {title:"Desain dan Arsitektur Perangkat Lunak", author:"N. Suryadi", call:"005 ARS", color:"#96392A", cover:"covers/desain-dan-arsitektur-perangkat-lunak.jpg"},
+    {title:"Analisis dan Perancangan Sistem Informasi", author:"L. Puspita", call:"003 SIS", color:"#1E3A37", cover:"covers/analisis-dan-perancangan-sistem-informasi.jpg"},
+    {title:"Rekayasa Sistem Terdistribusi", author:"T. Gunawan", call:"004 DIS", color:"#5C7A63", cover:"covers/rekayasa-sistem-terdistribusi.jpg"},
+    {title:"Perancangan Basis Data Lanjut", author:"V. Kartika", call:"005 BAS", color:"#A67F1E", cover:"covers/perancangan-basis-data-lanjut.jpg"},
+  ];
+  // ---- Matakuliah wajib > Filosofi komputasi ----
+  const filosofiBooks = [
+    {title:"Filsafat Ilmu Komputer", author:"O. Rahardjo", call:"121 FIL", color:"#A67F1E", cover:"covers/filsafat-ilmu-komputer.jpg"},
+    {title:"Teori Komputasi dan Otomata", author:"P. Wardhani", call:"511 OTO", color:"#1E3A37", cover:"covers/teori-komputasi-dan-otomata.jpg"},
+    {title:"Logika dan Dasar-Dasar Komputasi", author:"E. Halim", call:"511 LDK", color:"#5C7A63", cover:"covers/logika-dan-dasar-dasar-komputasi.jpg"},
+    {title:"Etika dan Filsafat Teknologi", author:"Y. Kristanto", call:"174 ETI", color:"#96392A", cover:"covers/etika-dan-filsafat-teknologi.jpg"},
+  ];
+  renderBooks(algoBooks, 'book-grid-algo');
+  renderBooks(mkMathBooks, 'book-grid-mkmat');
+  renderBooks(aljabarBooks, 'book-grid-aljabar');
+  renderBooks(desainBooks, 'book-grid-desain');
+  renderBooks(filosofiBooks, 'book-grid-filosofi');
+</script>
+
+</body>
+</html>

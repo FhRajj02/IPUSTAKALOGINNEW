@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPustaka PUA — Rak Pinjam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  if (!localStorage.getItem('ipustaka_session')) {
+    window.location.href = 'index.html';
+  }
+</script>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#17302D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0z"/>
+          <path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">iPustaka PUA</div>
+        <div class="brand-sub">Perpustakaan Digital</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group" id="nav-group-beranda">
+        <div class="nav-row">
+          <a class="nav-item" href="menu.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+            <span>Beranda</span>
+          </a>
+          <button class="nav-toggle" type="button" data-target="sub-beranda" aria-label="Buka submenu Beranda">
+            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="nav-sub" id="sub-beranda">
+          <div class="nav-group" id="nav-group-rekomendasi">
+            <div class="nav-row">
+              <a class="nav-subitem" href="menu-Beranda-Rekomendasi.html">
+                <span>Rekomendasi</span>
+              </a>
+              <button class="nav-toggle small" type="button" data-target="sub-rekomendasi" aria-label="Buka submenu Rekomendasi">
+                <svg class="nav-chevron small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <div class="nav-sub" id="sub-rekomendasi">
+              <a class="nav-subitem" href="menu-Beranda-rekomendasi-matakuliah_wajib.html">
+                <span>Matakuliah wajib</span>
+              </a>
+              <a class="nav-subitem" href="menu-Beranda-rekomendasi-Matakuliah_umum.html">
+                <span>Matakuliah umum</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-item" href="menu-Berita.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+        <span>Berita</span>
+      </a>
+      <a class="nav-item active" href="menu-rak_pinjam.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l1-3h14l1 3"/><rect x="4" y="7" width="16" height="13" rx="1.5"/><path d="M9 7v13M15 7v13"/></svg>
+        <span>Rak Pinjam</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-title">
+        <strong>Butuh bantuan?</strong>
+        Hubungi meja layanan di lantai 1
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="search-wrap">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" placeholder="Cari judul, penulis, atau subjek…">
+        </div>
+        <div class="search-modes">
+          <span class="search-mode"><span class="radio-dot checked"></span>Pencarian Umum</span>
+          <span class="search-mode"><span class="radio-dot"></span>Pencarian Kalimat</span>
+        </div>
+      </div>
+      <div class="user-block">
+        <div class="user-text">
+          <div class="user-name">Muhammad Fajar Akbar Sophian</div>
+          <a class="user-logout">Logout</a>
+        </div>
+        <div class="avatar">MF</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="view active" id="view-rak">
+        <div class="section-head" style="margin-top:0;">
+          <h2 class="section-title">Rak pinjam</h2>
+          <a class="section-link">Riwayat peminjaman</a>
+        </div>
+
+        <div class="shelf-stats">
+          <div class="stat-card">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Sedang dipinjam</div>
+          </div>
+          <div class="stat-card warn">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Jatuh tempo besok</div>
+          </div>
+          <div class="stat-card danger">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Terlambat dikembalikan</div>
+          </div>
+        </div>
+
+        <div class="loan-list" id="loan-list"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script src="auth.js"></script>
+<script>
+  var __session = requireSession('index.html');
+  if (__session) applySessionToPage(__session, 'index.html');
+</script>
+<script>
+  // ---- Rak Pinjam ----
+  const loans = [
+    {title:"Pengantar Ilmu Perpustakaan Modern", author:"R. Sutiyoso", cover:"#2C4A47", pinjam:"18 Agu 2026", tempo:"01 Sep 2026", status:"segera", label:"Jatuh tempo besok"},
+    {title:"Dasar-Dasar Antropologi Budaya", author:"S. Wulandari", cover:"#8FA893", pinjam:"10 Agu 2026", tempo:"24 Agu 2026", status:"terlambat", label:"Terlambat 8 hari"},
+    {title:"Metodologi Penelitian Kedokteran", author:"A. Prakoso", cover:"#C0932A", pinjam:"25 Agu 2026", tempo:"08 Sep 2026", status:"aktif", label:"Aktif"},
+    {title:"Manajemen Organisasi Kontemporer", author:"D. Hartanto", cover:"#B4472F", pinjam:"27 Agu 2026", tempo:"10 Sep 2026", status:"aktif", label:"Aktif"},
+  ];
+  const loanList = document.getElementById('loan-list');
+  const statusClass = {aktif:"status-aktif", segera:"status-segera", terlambat:"status-terlambat"};
+  loans.forEach(l=>{
+    const el = document.createElement('div');
+    el.className = 'loan-row';
+    el.innerHTML = `
+      <div class="loan-cover" style="background:${l.cover}"></div>
+      <div class="loan-info">
+        <p class="loan-title">${l.title}</p>
+        <p class="loan-author">${l.author}</p>
+      </div>
+      <div class="loan-dates">
+        <div><span>Dipinjam</span>${l.pinjam}</div>
+        <div><span>Jatuh tempo</span>${l.tempo}</div>
+      </div>
+      <span class="status-badge ${statusClass[l.status]}">${l.label}</span>
+      <button class="loan-action">Perpanjang</button>
+      <button class="loan-action ghost">Kembalikan</button>
+    `;
+    loanList.appendChild(el);
+  });
+</script>
+
+</body>
+</html>

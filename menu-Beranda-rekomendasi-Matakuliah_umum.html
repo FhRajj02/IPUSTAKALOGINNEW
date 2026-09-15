@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPustaka PUA — Matakuliah Umum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  if (!localStorage.getItem('ipustaka_session')) {
+    window.location.href = 'index.html';
+  }
+</script>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#17302D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0z"/>
+          <path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">iPustaka PUA</div>
+        <div class="brand-sub">Perpustakaan Digital</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group open" id="nav-group-beranda">
+        <div class="nav-row">
+          <a class="nav-item" href="menu.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+            <span>Beranda</span>
+          </a>
+          <button class="nav-toggle" type="button" data-target="sub-beranda" aria-label="Buka submenu Beranda">
+            <svg class="nav-chevron rotated" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="nav-sub" id="sub-beranda">
+          <div class="nav-group open" id="nav-group-rekomendasi">
+            <div class="nav-row">
+              <a class="nav-subitem" href="menu-Beranda-Rekomendasi.html">
+                <span>Rekomendasi</span>
+              </a>
+              <button class="nav-toggle small" type="button" data-target="sub-rekomendasi" aria-label="Buka submenu Rekomendasi">
+                <svg class="nav-chevron small rotated" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <div class="nav-sub" id="sub-rekomendasi">
+              <a class="nav-subitem" href="menu-Beranda-rekomendasi-matakuliah_wajib.html">
+                <span>Matakuliah wajib</span>
+              </a>
+              <a class="nav-subitem active" href="menu-Beranda-rekomendasi-Matakuliah_umum.html">
+                <span>Matakuliah umum</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-item" href="menu-Berita.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+        <span>Berita</span>
+      </a>
+      <a class="nav-item" href="menu-rak_pinjam.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l1-3h14l1 3"/><rect x="4" y="7" width="16" height="13" rx="1.5"/><path d="M9 7v13M15 7v13"/></svg>
+        <span>Rak Pinjam</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-title">
+        <strong>Butuh bantuan?</strong>
+        Hubungi meja layanan di lantai 1
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="search-wrap">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" placeholder="Cari judul, penulis, atau subjek…">
+        </div>
+        <div class="search-modes">
+          <span class="search-mode"><span class="radio-dot checked"></span>Pencarian Umum</span>
+          <span class="search-mode"><span class="radio-dot"></span>Pencarian Kalimat</span>
+        </div>
+      </div>
+      <div class="user-block">
+        <div class="user-text">
+          <div class="user-name">Muhammad Fajar Akbar Sophian</div>
+          <a class="user-logout">Logout</a>
+        </div>
+        <div class="avatar">MF</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="view active" id="view-matkul-umum">
+        <div class="section-head" style="margin-top:0;">
+          <h2 class="section-title">Matakuliah umum</h2>
+          <a class="section-link">Lihat silabus</a>
+        </div>
+        <p class="rec-intro">Bacaan pendukung untuk mata kuliah umum (MKU) yang berlaku lintas program studi.</p>
+
+        <div class="section" style="margin-top:0;">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Agama</h2></div>
+          <div class="book-grid" id="book-grid-agama"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Pancasila</h2></div>
+          <div class="book-grid" id="book-grid-pancasila"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Kewarganegaraan</h2></div>
+          <div class="book-grid" id="book-grid-pkn"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Bahasa Indonesia</h2></div>
+          <div class="book-grid" id="book-grid-bindo"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script src="auth.js"></script>
+<script>
+  var __session = requireSession('index.html');
+  if (__session) applySessionToPage(__session, 'index.html');
+</script>
+<script src="books.js"></script>
+<script>
+  // ---- Matakuliah umum > Agama ----
+  const agamaBooks = [
+    {title:"Pendidikan Agama Islam untuk Perguruan Tinggi", author:"Tim MKU Agama Islam", call:"297 ISL", color:"#1E3A37", cover:"covers/pendidikan-agama-islam-untuk-perguruan-tinggi.jpg"},
+    {title:"Pendidikan Agama Kristen Protestan", author:"Tim MKU Agama Kristen", call:"230 KRP", color:"#5C7A63", cover:"covers/pendidikan-agama-kristen-protestan.jpg"},
+    {title:"Pendidikan Agama Katolik", author:"Tim MKU Agama Katolik", call:"282 KAT", color:"#A67F1E", cover:"covers/pendidikan-agama-katolik.jpg"},
+    {title:"Pendidikan Agama Hindu", author:"Tim MKU Agama Hindu", call:"294 HIN", color:"#96392A", cover:"covers/pendidikan-agama-hindu.jpg"},
+    {title:"Pendidikan Agama Buddha", author:"Tim MKU Agama Buddha", call:"294 BUD", color:"#2C4A47", cover:"covers/pendidikan-agama-buddha.jpg"},
+    {title:"Pendidikan Agama Khonghucu", author:"Tim MKU Agama Khonghucu", call:"299 KHC", color:"#5C7A63", cover:"covers/pendidikan-agama-khonghucu.jpg"},
+  ];
+  // ---- Matakuliah umum > Pancasila ----
+  const pancasilaBooks = [
+    {title:"Pendidikan Pancasila untuk Perguruan Tinggi", author:"Tim Dosen Pancasila", call:"320 PAN", color:"#1E3A37", cover:"covers/pendidikan-pancasila-untuk-perguruan-tinggi.jpg"},
+    {title:"Pancasila sebagai Dasar dan Ideologi Negara", author:"S. Widiatmoko", call:"320 IDE", color:"#5C7A63", cover:"covers/pancasila-sebagai-dasar-dan-ideologi-negara.jpg"},
+    {title:"Nilai-Nilai Pancasila dalam Kehidupan Berbangsa", author:"R. Anindita", call:"320 NIL", color:"#A67F1E", cover:"covers/nilai-nilai-pancasila-dalam-kehidupan-berbangsa.jpg"},
+    {title:"Sejarah Perumusan Pancasila", author:"B. Suryanto", call:"959 SEJ", color:"#96392A", cover:"covers/sejarah-perumusan-pancasila.jpg"},
+  ];
+  // ---- Matakuliah umum > Kewarganegaraan ----
+  const pknBooks = [
+    {title:"Pendidikan Kewarganegaraan untuk Perguruan Tinggi", author:"Tim Dosen PKn", call:"323 KWN", color:"#1E3A37", cover:"covers/pendidikan-kewarganegaraan-untuk-perguruan-tinggi.jpg"},
+    {title:"Hak dan Kewajiban Warga Negara", author:"M. Iskandar", call:"342 HAK", color:"#5C7A63", cover:"covers/hak-dan-kewajiban-warga-negara.jpg"},
+    {title:"Wawasan Kebangsaan dan Bela Negara", author:"T. Herlambang", call:"355 WAW", color:"#A67F1E", cover:"covers/wawasan-kebangsaan-dan-bela-negara.jpg"},
+    {title:"Demokrasi dan Konstitusi Indonesia", author:"A. Yuniarti", call:"342 DEM", color:"#96392A", cover:"covers/demokrasi-dan-konstitusi-indonesia.jpg"},
+  ];
+  // ---- Matakuliah umum > Bahasa Indonesia ----
+  const bindoBooks = [
+    {title:"Bahasa Indonesia untuk Perguruan Tinggi", author:"Tim Dosen Bahasa Indonesia", call:"499 BIN", color:"#1E3A37", cover:"covers/bahasa-indonesia-untuk-perguruan-tinggi.jpg"},
+    {title:"Keterampilan Menulis Karya Ilmiah", author:"D. Kusnadi", call:"808 KAR", color:"#5C7A63", cover:"covers/keterampilan-menulis-karya-ilmiah.jpg"},
+    {title:"Tata Bahasa dan Ejaan Bahasa Indonesia", author:"N. Fitriani", call:"499 TAT", color:"#A67F1E", cover:"covers/tata-bahasa-dan-ejaan-bahasa-indonesia.jpg"},
+    {title:"Bahasa Indonesia Akademik", author:"W. Handoko", call:"499 AKA", color:"#96392A", cover:"covers/bahasa-indonesia-akademik.jpg"},
+  ];
+  renderBooks(agamaBooks, 'book-grid-agama');
+  renderBooks(pancasilaBooks, 'book-grid-pancasila');
+  renderBooks(pknBooks, 'book-grid-pkn');
+  renderBooks(bindoBooks, 'book-grid-bindo');
+</script>
+
+</body>
+</html>

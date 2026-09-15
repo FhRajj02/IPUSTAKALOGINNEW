@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPustaka PUA — Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Kalau sudah login, langsung lempar ke halaman yang sesuai perannya.
+  (function () {
+    try {
+      var raw = localStorage.getItem('ipustaka_session');
+      if (raw) {
+        var s = JSON.parse(raw);
+        window.location.href = (s && s.role === 'admin') ? 'admin-dashboard.html' : 'menu.html';
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body class="login-body">
+
+<div class="login-screen">
+  <div class="login-brand">
+    <div class="login-logo-wrap">
+      <!--
+        Ganti logo: taruh file gambar bernama persis "LOGO-LOGIN.png"
+        di folder yang sama dengan file ini. Format lain (.jpg/.jpeg/.webp)
+        juga bisa, tinggal sesuaikan nama file di atribut src di bawah ini.
+      -->
+      <img class="login-logo" src="LOGO-LOGIN.png" alt="Logo institusi"
+           onerror="this.style.display='none'; document.getElementById('login-logo-fallback').style.display='flex';">
+      <div class="login-logo-fallback" id="login-logo-fallback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F8F5EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0z"/></svg>
+      </div>
+    </div>
+    <div class="login-brand-title">iPustaka PUA Prototipe</div>
+  </div>
+
+  <div class="login-panel">
+    <h1 class="login-panel-title">Masuk ke akun anda</h1>
+    <form id="login-form" class="login-form" novalidate>
+      <label class="login-label" for="login-id">ID</label>
+      <input class="login-input" type="text" id="login-id" placeholder="Masukkan ID pengguna" autocomplete="username">
+
+      <label class="login-label" for="login-password">Password</label>
+      <div class="login-password-wrap">
+        <input class="login-input" type="password" id="login-password" placeholder="Masukkan password" autocomplete="current-password">
+        <button type="button" class="login-eye" id="login-eye" aria-label="Tampilkan password">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+
+      <p class="login-error" id="login-error" hidden></p>
+
+      <button type="submit" class="login-submit">LOGIN</button>
+    </form>
+    <p class="login-hint">Demo anggota: <strong>Anggota Demo</strong> / <strong>demo123</strong><br>Login admin: <strong>admin</strong> / <strong>12345</strong></p>
+  </div>
+</div>
+
+<script src="members-data.js"></script>
+<script src="auth.js"></script>
+<script>
+  document.getElementById('login-eye').addEventListener('click', function () {
+    var input = document.getElementById('login-password');
+    input.type = (input.type === 'password') ? 'text' : 'password';
+  });
+
+  document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var id = document.getElementById('login-id').value.trim();
+    var password = document.getElementById('login-password').value;
+    var errorEl = document.getElementById('login-error');
+    errorEl.hidden = true;
+
+    if (id === AUTH_ADMIN.id && password === AUTH_ADMIN.password) {
+      saveSession({ role: 'admin', name: 'Admin' });
+      window.location.href = 'admin-dashboard.html';
+      return;
+    }
+
+    var members = getMembers();
+    var match = members.find(function (m) { return m.name === id && m.password === password; });
+    if (match) {
+      saveSession({ role: 'member', name: match.name });
+      window.location.href = 'menu.html';
+      return;
+    }
+
+    errorEl.textContent = 'ID atau password salah.';
+    errorEl.hidden = false;
+  });
+</script>
+
+</body>
+</html>

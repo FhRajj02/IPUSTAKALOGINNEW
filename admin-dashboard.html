@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPustaka PUA — Dashboard Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  (function () {
+    var raw = localStorage.getItem('ipustaka_session');
+    var session = null;
+    try { session = raw ? JSON.parse(raw) : null; } catch (e) {}
+    if (!session) {
+      window.location.href = 'index.html';
+    } else if (session.role !== 'admin') {
+      window.location.href = 'menu.html';
+    }
+  })();
+</script>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#17302D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0z"/>
+          <path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">iPustaka PUA</div>
+        <div class="brand-sub">Perpustakaan Digital</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-item active" href="admin-dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 20v-2a4 4 0 0 0-3-3.87"/><path d="M17 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Dashboard Admin</span>
+      </a>
+      <a class="nav-item" href="menu.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+        <span>Lihat situs anggota</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-title">
+        <strong>Mode admin</strong>
+        Kelola akun anggota di sini
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="search-wrap">
+        <h1 class="font-display" style="font-size:20px; margin:0; color:var(--ink-900);">Dashboard Admin</h1>
+      </div>
+      <div class="user-block">
+        <div class="user-text">
+          <div class="user-name">Admin</div>
+          <a class="user-logout">Logout</a>
+        </div>
+        <div class="avatar">AD</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="view active" id="view-admin">
+        <div class="section-head" style="margin-top:0;">
+          <h2 class="section-title">Kelola anggota</h2>
+        </div>
+        <p class="rec-intro">Tambah atau hapus akun anggota yang bisa login ke situs. Lihat catatan di README proyek soal batasan penyimpanan data ini.</p>
+
+        <div class="shelf-stats" style="grid-template-columns:minmax(160px,220px);">
+          <div class="stat-card">
+            <div class="stat-num" id="member-count">0</div>
+            <div class="stat-label">Total anggota terdaftar</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Tambah anggota baru</h2></div>
+          <form id="add-member-form" class="admin-form">
+            <input type="text" id="new-member-name" class="login-input" placeholder="Nama anggota" autocomplete="off">
+            <input type="text" id="new-member-password" class="login-input" placeholder="Password" autocomplete="off">
+            <button type="submit" class="loan-action">Tambah anggota</button>
+          </form>
+          <p class="login-error" id="add-member-error" hidden></p>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Daftar anggota</h2></div>
+          <div class="loan-list" id="member-list"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-head"><h2 class="section-title" style="font-size:16px;">Ekspor ke members-data.js</h2></div>
+          <p class="rec-intro">Perubahan di atas baru tersimpan sementara di browser ini. Supaya permanen dan ikut ter-deploy ke situs live, unduh file di bawah, timpa <code>members-data.js</code> di proyekmu, lalu commit &amp; push ke GitHub seperti biasa (git add, commit, push manual — situs live baru ikut berubah setelah GitHub Pages selesai build ulang).</p>
+          <pre class="export-preview" id="export-preview"></pre>
+          <div class="admin-form" style="margin-top:10px;">
+            <button type="button" class="loan-action" id="download-btn">Unduh members-data.js</button>
+            <button type="button" class="loan-action ghost" id="copy-btn">Salin kode</button>
+          </div>
+          <p class="login-error" id="copy-feedback" hidden></p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script src="members-data.js"></script>
+<script src="auth.js"></script>
+<script>
+  var __session = getSession();
+  applySessionToPage(__session, 'index.html');
+
+  function updateExportPreview() {
+    document.getElementById('export-preview').textContent = generateMembersDataJs(getMembers());
+  }
+
+  function renderMembers() {
+    var members = getMembers();
+    document.getElementById('member-count').textContent = members.length;
+    var list = document.getElementById('member-list');
+    list.innerHTML = '';
+    members.forEach(function (m, idx) {
+      var row = document.createElement('div');
+      row.className = 'loan-row';
+      row.innerHTML =
+        '<div class="loan-cover" style="background:#2C4A47; display:flex; align-items:center; justify-content:center; color:#F8F5EE; font-weight:600; font-size:13px;">' + initials(m.name) + '</div>' +
+        '<div class="loan-info">' +
+          '<p class="loan-title">' + m.name + '</p>' +
+          '<p class="loan-author">Password: ' + '•'.repeat(Math.max(m.password.length, 4)) + '</p>' +
+        '</div>' +
+        '<button class="loan-action danger" data-idx="' + idx + '">Hapus</button>';
+      list.appendChild(row);
+    });
+    list.querySelectorAll('.loan-action.danger').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.getAttribute('data-idx'), 10);
+        var current = getMembers();
+        current.splice(idx, 1);
+        saveMembers(current);
+        renderMembers();
+      });
+    });
+    updateExportPreview();
+  }
+  renderMembers();
+
+  document.getElementById('download-btn').addEventListener('click', downloadMembersDataJs);
+
+  document.getElementById('copy-btn').addEventListener('click', function () {
+    var text = generateMembersDataJs(getMembers());
+    var feedback = document.getElementById('copy-feedback');
+    navigator.clipboard.writeText(text).then(function () {
+      feedback.textContent = 'Kode berhasil disalin.';
+      feedback.style.color = 'var(--teal-700)';
+      feedback.hidden = false;
+      setTimeout(function () { feedback.hidden = true; }, 2500);
+    }).catch(function () {
+      feedback.textContent = 'Gagal menyalin otomatis — salin manual dari kotak di atas.';
+      feedback.style.color = 'var(--red-500)';
+      feedback.hidden = false;
+    });
+  });
+
+  document.getElementById('add-member-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nameInput = document.getElementById('new-member-name');
+    var passInput = document.getElementById('new-member-password');
+    var errorEl = document.getElementById('add-member-error');
+    var name = nameInput.value.trim();
+    var password = passInput.value;
+    errorEl.hidden = true;
+
+    if (!name || !password) {
+      errorEl.textContent = 'Nama dan password wajib diisi.';
+      errorEl.hidden = false;
+      return;
+    }
+    var members = getMembers();
+    if (members.some(function (m) { return m.name.toLowerCase() === name.toLowerCase(); })) {
+      errorEl.textContent = 'Nama anggota sudah dipakai, gunakan nama lain.';
+      errorEl.hidden = false;
+      return;
+    }
+    members.push({ name: name, password: password });
+    saveMembers(members);
+    nameInput.value = '';
+    passInput.value = '';
+    renderMembers();
+  });
+</script>
+
+</body>
+</html>
