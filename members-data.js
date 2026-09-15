@@ -23,6 +23,8 @@ const membersData = [
   { name: "Anggota Demo", password: "demo123" },
   { name: "Fajar", password: "Fajar" },
   { name: "Khairan", password: "Khairan" },
-  { name: "Umar", password: "Umar" }
+  { name: "Umar", password: "Umar" },
+  { name: "dosen", password: "12345" },
+  { name: "mahasiswa", password: "12345" }
 ];
 
