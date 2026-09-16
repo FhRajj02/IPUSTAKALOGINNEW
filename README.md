@@ -9,7 +9,7 @@ dan diatur di VS Code. Buka folder ini sebagai workspace, lalu jalankan
 ```
 index.html (LOGIN)
   ├─ login sebagai admin (admin / 12345)  →  admin-dashboard.html
-  └─ login sebagai anggota                →  menu.html (Beranda)
+  └─ login sebagai anggota                →  menu.html (Beranda).
                                                 ├─ menu-Beranda-Rekomendasi.html
                                                 │    ├─ menu-Beranda-rekomendasi-matakuliah_wajib.html
                                                 │    └─ menu-Beranda-rekomendasi-Matakuliah_umum.html
